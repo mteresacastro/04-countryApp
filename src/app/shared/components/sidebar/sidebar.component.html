@@ -4,7 +4,7 @@
 <ul class="list-group">
   <li
     routerLink=""
-    class="list-group-item"
+    class="list-group-item cursor-pointer"
     routerLinkActive="active"
     [routerLinkActiveOptions]="{exact : true}">
     <!-- la linea anterior es para que la path sea exactamente la que indica el routerlink para que se cumpla la condicion del active -->
@@ -12,14 +12,32 @@
   </li>
   <li
     routerLink="about"
-    class="list-group-item"
+    class="list-group-item cursor-pointer"
     routerLinkActive="active">
     About page
   </li>
   <li
     routerLink="contact"
-    class="list-group-item"
+    class="list-group-item cursor-pointer"
     routerLinkActive="active">
     Contact page
+  </li>
+  <li
+    routerLink="countries/by-capital"
+    class="list-group-item cursor-pointer"
+    routerLinkActive="active">
+    Por Capital
+  </li>
+  <li
+    routerLink="countries/by-country"
+    class="list-group-item cursor-pointer"
+    routerLinkActive="active">
+    Por País
+  </li>
+  <li
+    routerLink="countries/by-region"
+    class="list-group-item cursor-pointer"
+    routerLinkActive="active">
+    Por Región
   </li>
 </ul>
