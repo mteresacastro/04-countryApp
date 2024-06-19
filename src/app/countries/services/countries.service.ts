@@ -12,6 +12,13 @@ export class CountriesService {
 
   constructor(private httpClient: HttpClient) { }
 
+  private getCountriesRequest( url: string): Observable<Country[]>{
+    return this.httpClient.get<Country[]>(url)
+    .pipe( //recibe tantos operadores de Rxjs como quiera
+      catchError( () => of([]))
+    )
+  }
+
   searchCountryByAlphaCode( code: string ): Observable<Country | null>{
 
     return this.httpClient.get<Country[]>(`${this.apiUrl}/alpha/${ code }`)
@@ -22,27 +29,18 @@ export class CountriesService {
   }
 
   searchCapital( term: string): Observable<Country[]>{
-
-    return this.httpClient.get<Country[]>(`${this.apiUrl}/capital/${ term }`)
-      .pipe(
-        catchError( () => of([]))
-      )
+    const url = `${this.apiUrl}/capital/${ term }`
+    return this.getCountriesRequest( url )
   }
 
   searchCountry( term: string): Observable<Country[]>{
-
-    return this.httpClient.get<Country[]>(`${this.apiUrl}/name/${ term }`)
-      .pipe(
-        catchError( () => of([]))
-      )
+    const url = `${this.apiUrl}/name/${ term }`
+    return this.getCountriesRequest( url)
   }
 
 
   searchRegion( region: string): Observable<Country[]>{
-
-    return this.httpClient.get<Country[]>(`${this.apiUrl}/region/${ region }`)
-    .pipe(
-      catchError( () => of([]))
-    )
+    const url = `${this.apiUrl}/region/${ region }`
+    return this.getCountriesRequest( url )
   }
 }
