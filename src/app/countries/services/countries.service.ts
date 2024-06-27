@@ -16,7 +16,7 @@ export class CountriesService {
     return this.httpClient.get<Country[]>(url)
     .pipe( //recibe tantos operadores de Rxjs como quiera
       catchError( () => of([])),
-      delay ( 2000 )
+      //delay ( 2000 )
     )
   }
 
